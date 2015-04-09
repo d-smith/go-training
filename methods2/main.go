@@ -68,6 +68,6 @@ func main() {
 	s.sayHello()
 
 	// Call the sayHello function passing each concrete type.
-	sayHello(e)
-	sayHello(c)
+	sayHello(new(english))
+	sayHello(new(chinese))
 }

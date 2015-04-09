@@ -220,3 +220,15 @@ https://play.golang.org/p/myZaTlp4Qd - expressions are not addressable.
 * Interface compliance is at the value level, not the type level.
 * First part of interface header - points to the iTable, which has the type
 as well as the method set.
+
+Embedding
+
+* Allows you to take an existing type and extend it
+* Can take an existing type and override its behavior
+* Embed the type by including an inner type in the struct declaration - https://play.golang.org/p/UkrDXkk-Ch
+* The inner type exists in and of itself.
+* Type promotion - all the methods and identifiers of the inner type are
+promoted up to the outer type.
+* Override example - if the outer type implements the interface the the inner type
+interface is not promoted, use case is you call the inner impl before adding in the
+outer's value.
