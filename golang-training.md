@@ -84,7 +84,8 @@ Pointers
 * Everything is go is passed by value (what you see is what you get)
 * Stack vs heap allocation - compiler does escape analysis and decides where to
 allocate the memory. See https://github.com/ArdanStudios/gotraining/tree/master/01-language_syntax/03-pointers/example1
-* Escape analysis is an implementation detail - any monkeying you do based on
+* Note escape analysis is also in play when using new
+*Escape analysis is an implementation detail - any monkeying you do based on
 escape analysis might be invalidated in a language release, for example 1.5 will
 make changes to the escape analysis done in 1.4
 * Use variable name - value
@@ -174,3 +175,32 @@ second argument - first argument is the length. Change value in the underlying
 data structure when mutiple slice headers are viewing it - all the views see the
 change. Unless... you add a third argument to set the capacity of the slice of
 slice, e.g. slice1[2:4:4]
+
+Maps
+
+* Map iteration order is random - not just undefined by purposely random. Use
+a slice if you need ordering.
+* Key - if you can't use it in a conditional expression (equals operator) you can't
+use it as a map key. You can use a struct as a key, as long as each field could be
+used as a key.
+* Make a map with... make. Need to make one or initialize one via a composite literal
+before you work with it (key : value). Again, think about zero value/non-zero value when
+deciding how to do the initialization.
+* Set - via map of string to empty struct map[string]struct{}. Empty struct is a zero
+  allocation value. x := string{{}}
+
+
+Methods and Embedding
+
+* Methods are functions with receivers
+* Can have value receivers or pointer receivers - work with a copy of the
+value, or work with the shared value (and can thus alter the shared value)
+For pointer receivers we don't have to use the * operator.
+* Go adjusts calls as needed when caller uses pointer or a value based on the
+receiver type.
+* Can only declare methods for user types - structs, named types (not built in types).
+* Function type - reference type (header value - two parts - first part is pointer
+  to the code, second part is any data needed to call it)
+* Methods are a compiler construct, we really just have functions. Receiver is
+really just the first parameter of the function. See http://play.golang.org/p/MNI1jR8Ets
+* Methods are just functions with the first parameter being the receiver.
