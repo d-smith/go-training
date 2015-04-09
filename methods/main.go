@@ -16,23 +16,23 @@ import (
 
 // Declare a struct that represents a ball player.
 type Baller struct {
-	name string
+	name   string
 	atBats float64
-	hits float64
+	hits   float64
 }
+
 // Include field called name, atBats and hits.
 
 // Declare a method that calculates the batting average for a batter.
 func (b *Baller) average() float64 {
-	return b.hits/b.atBats
+	return b.hits / b.atBats
 }
 
 // main is the entry point for the application.
 func main() {
 	// Create a slice of players and populate each player
 	// with field values.
-	players := []Baller{ {name:"a", atBats:1000.0, hits:10.0}, {name:"b", atBats: 1000.0, hits:354.0}}
-	
+	players := []Baller{{name: "a", atBats: 1000.0, hits: 10.0}, {name: "b", atBats: 1000.0, hits: 354.0}}
 
 	// Display the batting average for each player in the slice.
 	for _, baller := range players {

@@ -204,3 +204,19 @@ receiver type.
 * Methods are a compiler construct, we really just have functions. Receiver is
 really just the first parameter of the function. See http://play.golang.org/p/MNI1jR8Ets
 * Methods are just functions with the first parameter being the receiver.
+
+Interfaces
+
+* Interfaces declare behavior
+* Ref type - two word header value - first word is about the type, second
+is the value of a concrete type embedded in the interface header.
+* Method sets - spec treats them from the value point of view. When I have
+a value of type T, only value receivers implement the interface. When I have a
+pointer, values and pointers of type T implement the interface. This is
+because you can't always get the address of a value - for example see
+https://play.golang.org/p/myZaTlp4Qd - expressions are not addressable.
+* From the receiver point of view, (*T) *T, (T) &T,T
+* Think of it from the receiver's point of view
+* Interface compliance is at the value level, not the type level.
+* First part of interface header - points to the iTable, which has the type
+as well as the method set.
