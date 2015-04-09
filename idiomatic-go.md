@@ -5,4 +5,5 @@ other cases.
 * Struct literal declaration - only include the fields that you are initializing to
 non-zero values.
 * Leverage constants of a kind
+* For-range : idiomatic way to iterate through an array or a slice
 * Go build, golint, go vet
