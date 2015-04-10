@@ -13,6 +13,11 @@ as a factory, and don't make copies of the returned value.
 * Error variables start with Err
 * Customer error type names end with Error
 * Type as context pattern
+* Channel with an empty struct type - typically used for notification, for
+instance system shutdown.
+* If you hand off a channel to sig.notify you should not close that channel, as a
+send on it later will cause a panic
+
 
 
 

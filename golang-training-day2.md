@@ -97,7 +97,7 @@ something else to run.
 network calls, come back when done.
 * No access to thread local storage, thread ids, etc.
 
-Concurrency and Channels
+Concurrency
 
 * Ignore the above, assume each go routine is running at the same time - once you hit a go
 statement, assume it is running.
@@ -113,3 +113,26 @@ partial writes.
 * Can run code with the race detector via `go build -race` or `go run -race foo.go`
 * Race conditions can often manifest themselves on shutdown
 * Atomic writes, mutexs, etc.
+
+Channels
+
+* Channels - send and receive
+* Buffered channels have capacity for storing data, no guarantees about that the data has
+been consumed by another go routine (but can use them in a manner to have guarantees)
+* Unbuffered channels have guarantees associated with them, apply back-pressure
+(push back)
+* Build with unbuffered channels first to understand what happens when the load is
+too great. Make it predictable. Once you can handle back pressure look to where you can
+use buffered channels as a performance enhancement, being prepared to handle data loss.
+* Unbuffered channel - block on the send until someone can receive it. Receive blocks until
+there is something to receive.
+* Buffered channel - put the data in the channel without a reader if there's capacity
+in the channel. If there is no capacity, sender blocks.
+* When a channel is closed, sends on the channel will panic, recieves immediately
+unblock (check the receieve status to know if the channel was close - ok is false)
+* Channels and go routines are natural code constructs the have Fidelity to the
+interactions you'd typically diagram on the whiteboard.
+* Lots of concepts here - http://play.golang.org/p/KuMG3o_7-C Selects, default in select
+to 'peek' and know if the channel is still open, decoration of parameters to know
+if the channel should only be used to send or receive, how receive on a nil channel
+blocks forever, etc.
