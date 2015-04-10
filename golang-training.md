@@ -204,6 +204,8 @@ receiver type.
 * Methods are a compiler construct, we really just have functions. Receiver is
 really just the first parameter of the function. See http://play.golang.org/p/MNI1jR8Ets
 * Methods are just functions with the first parameter being the receiver.
+* Pointer types can be embedded as well (look at File in this example -
+  https://play.golang.org/p/xD6PCx--GG)
 
 Interfaces
 
