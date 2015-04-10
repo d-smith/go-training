@@ -29,7 +29,7 @@ func main() {
 	go func() {
 		// Declare a loop that counts down from 100 to 0 and
 		// display each value.
-		for i := 1000; i > 0; i-- {
+		for i := 100; i > 0; i-- {
 			fmt.Printf("func A %d\n", i)
 		}
 
@@ -42,7 +42,7 @@ func main() {
 	go func() {
 		// Declare a loop that counts up from 0 to 100 and
 		// display each value.
-		for i := 1000; i > 0; i-- {
+		for i := 0; i < 100; i++ {
 			fmt.Printf("func B %d\n", i)
 		}
 

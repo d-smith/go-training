@@ -75,6 +75,7 @@ values in your API. Error values are unique based the address they are created w
 * If an error occurs, ignore other parameters. As API provider, return zero values for the
 other params.
 * Return default error type pointers, not your custom error type.
+* Panic vs log.Fatal - game over, use Panic is you want the stack trace.
 
 Concurrency and Channels - Background
 
@@ -104,3 +105,11 @@ statement, assume it is running.
 is finished, and the program shuts down.
 * Prefer GOMAXPROCS as an environment variable instead of via the runtime package, by default
 GOMAXPROCS is 1.
+
+Race Conditions
+
+* Read and write of words are atomic, but not synchronized. Larger than a word, can see
+partial writes.
+* Can run code with the race detector via `go build -race` or `go run -race foo.go`
+* Race conditions can often manifest themselves on shutdown
+* Atomic writes, mutexs, etc.
