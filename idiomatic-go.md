@@ -10,6 +10,9 @@ non-zero values.
 notifier interface, notify method.
 * New - idiomatic for creating stuff. If you see a New in a package, use it
 as a factory, and don't make copies of the returned value.
+* Error variables start with Err
+* Customer error type names end with Error
+* Type as context pattern
 
 
 
