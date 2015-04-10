@@ -75,3 +75,32 @@ values in your API. Error values are unique based the address they are created w
 * If an error occurs, ignore other parameters. As API provider, return zero values for the
 other params.
 * Return default error type pointers, not your custom error type.
+
+Concurrency and Channels - Background
+
+* Process - container of resources (threads, memory, file descriptors, etc)
+* Process has a main thread, OS schedules threads for execution on the processor
+* Some overhead with threads, each thread gets 1MB stack, OS needs to keep track
+of state of CPU etc for each thread, etc.
+* Efficient utilization of a single thread gets more CPU time.
+* Concurrency is managing a lot of things at once (different from parallelism)
+* Start a program - go runtime gives it a single logical processor with a single OS
+thread. Local run queue for logical processor, global run queue.
+* Scheduler looks at things roughly every 10 ms, may preempt things to run other
+threads, etc. OS perspective - thread never goes to sleep.
+* Go scheduler is smart about what it saves and restores for efficiency.
+* Looks for blocking calls - detach thread from the LP, assign another and schedule
+something else to run.
+* Max threads is 10,000 by default
+* Network poller - set of threads for doing networking, threads move to the thread poller for
+network calls, come back when done.
+* No access to thread local storage, thread ids, etc.
+
+Concurrency and Channels
+
+* Ignore the above, assume each go routine is running at the same time - once you hit a go
+statement, assume it is running.
+* Your main function starts running on the main thread - when main returns, the main thread
+is finished, and the program shuts down.
+* Prefer GOMAXPROCS as an environment variable instead of via the runtime package, by default
+GOMAXPROCS is 1.
