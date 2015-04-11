@@ -136,3 +136,7 @@ interactions you'd typically diagram on the whiteboard.
 to 'peek' and know if the channel is still open, decoration of parameters to know
 if the channel should only be used to send or receive, how receive on a nil channel
 blocks forever, etc.
+* What happens when you close a buffered channel when it has contains data. The ok status
+or the for range continues until the data has been drained.
+* Use select case only where you receive from more than one channel or you want the default
+to not block.

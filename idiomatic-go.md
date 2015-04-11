@@ -17,6 +17,13 @@ as a factory, and don't make copies of the returned value.
 instance system shutdown.
 * If you hand off a channel to sig.notify you should not close that channel, as a
 send on it later will cause a panic
+* Work with values until you need to share; create and work with the value until you
+need to share it. Exception - just creating the value to share as a pointer.
+* If the standard library has an interface with the method names you need, use that
+instead of creating your own interface.
+* Named return values w/naked returns reduce the readability of the code.
+* Keep acquisition and release close to each other, typically done using defer.
+
 
 
 
