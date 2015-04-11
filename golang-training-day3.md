@@ -22,3 +22,35 @@ might need in the future.
 * Closure example - https://github.com/ArdanStudios/gotraining/blob/master/08-concurrency_patterns/pool/main/main.go -
 the query variable is passed to the go routine so they can have their own unique value,
 otherwise they would share q which would get set to the max value in the loop
+
+
+Testing
+
+* Tests in the same package - access to all the exported and unexported
+* Tests in a separate package - can access only the unexported identifiers
+* Goconvey - constant feedback on tests, good for services/products/etc.
+* Team needs to standardize on output content and format for tests.
+* Example tests - based on the APIs
+* Example test - Example + API Func, e.g. ExampleStart, has //Output: at the
+end specifiying the desired output
+* Example tests also produce documentation
+
+Benchmarking
+
+* Use the bytes package instead of the strings package for string manipulation,
+bytes has the same api as the strings function, much much faster
+
+
+Go Tooling
+
+<pre>
+MACLB015803:example1 a045103$ go build
+../../../../../ArdanStudios/gotraining/09-testing/01-testing/example1/mongodb/mongodb.go:13:2: cannot find package "gopkg.in/mgo.v2" in any of:
+	/usr/local/go/src/gopkg.in/mgo.v2 (from $GOROOT)
+	/Users/a045103/goprojects/src/gopkg.in/mgo.v2 (from $GOPATH)
+../../../../../ArdanStudios/gotraining/09-testing/01-testing/example1/buoy/buoy.go:15:2: cannot find package "gopkg.in/mgo.v2/bson" in any of:
+	/usr/local/go/src/gopkg.in/mgo.v2/bson (from $GOROOT)
+	/Users/a045103/goprojects/src/gopkg.in/mgo.v2/bson (from $GOPATH)
+MACLB015803:example1 a045103$ go get
+MACLB015803:example1 a045103$ go build
+</pre>
