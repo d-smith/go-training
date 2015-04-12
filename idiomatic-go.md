@@ -23,9 +23,12 @@ need to share it. Exception - just creating the value to share as a pointer.
 instead of creating your own interface.
 * Named return values w/naked returns reduce the readability of the code.
 * Keep acquisition and release close to each other, typically done using defer.
+* fmt - "fumpt"
+* Web site - source graph
 
 
 
-
+Misc
 
 * Go build, golint, go vet
+* Slack community - sign up via a icon on the http://blog.gopheracademy.com/ website.

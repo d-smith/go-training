@@ -38,7 +38,44 @@ end specifiying the desired output
 Benchmarking
 
 * Use the bytes package instead of the strings package for string manipulation,
-bytes has the same api as the strings function, much much faster
+bytes has the same api as the strings function, much much faster. Note: check
+to see if this can work with multibyte characters or not - might not work
+when working with multibyte strings.
+
+Branch Prediction
+
+* You get some mechanical sympathy by following the idioms, but being aware of
+the hardware will let you get more performance out of your code.
+* How can we write code to let processors make accurate predictions?
+* If you can remove the randomness from your code, you can help the hardware
+prediction.
+
+Caching
+
+* Memory is dealt with in cache lines, which move things in chunks of 64K
+* This means we want our data to be contiguous, not randomly spread around. Can we
+organize our data across 64K blocks?
+* Work with things in a predictable way, e.g. try to read within the same cache
+line.
+* Slices are an important tool for arranging data in a predictable way.
+
+Profiling
+
+* Note that profiling on the mac requires hacking the kernel - refer to the notes
+* Note the http profiling port - https://golang.org/pkg/net/http/pprof/
+* Docker container?
+
+Go Debug Environment Variable
+
+* Use the GODEBUG environment variable to get information about the runtime -
+http://golang.org/pkg/runtime/
+* Note this kicks in when running go tooling, so set it just when needed.
+* Detailed - M threads, P processors, G go routines
+
+Standard Library
+
+* Study the io and time packages.
+
 
 
 Go Tooling
