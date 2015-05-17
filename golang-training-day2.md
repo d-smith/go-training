@@ -1,6 +1,6 @@
-Go Training - Day 2
+## Go Training - Day 2
 
-Packaging
+### Packaging
 
 * Semantic units of code you would find in a folder
 * Compiler builds all the packages, then links them together
@@ -15,7 +15,7 @@ declaration syntax. Generally frowned upon, golint will complain.
 * Package name is the last folder name on the path
 * Study the time and the io package
 
-Code Files - Readability
+### Code Files - Readability
 
 * Understand the intent of the package, then read the code from top to bottom
 * Story - the product you are building, what it does. Packages - outline of the
@@ -25,7 +25,7 @@ understand the story.
 * What do the imports look like?
 * Code as prose
 
-Using Pointers
+### Using Pointers
 
 * Types have a nature
 * Primitive types - built ins, reference types, typically not shared, you provide
@@ -39,7 +39,7 @@ types use pointer receivers
 * Exception: unmarshal needs to use a shared value, only exception to the rule
 in the standard library.
 
-Error Handling
+### Error Handling
 
 * Think about this in terms of API design
 * Errors in go are just values, can take on any behavior we need
@@ -77,7 +77,7 @@ other params.
 * Return default error type pointers, not your custom error type.
 * Panic vs log.Fatal - game over, use Panic is you want the stack trace.
 
-Concurrency and Channels - Background
+### Concurrency and Channels - Background
 
 * Process - container of resources (threads, memory, file descriptors, etc)
 * Process has a main thread, OS schedules threads for execution on the processor
@@ -97,7 +97,7 @@ something else to run.
 network calls, come back when done.
 * No access to thread local storage, thread ids, etc.
 
-Concurrency
+### Concurrency
 
 * Ignore the above, assume each go routine is running at the same time - once you hit a go
 statement, assume it is running.
@@ -106,7 +106,7 @@ is finished, and the program shuts down.
 * Prefer GOMAXPROCS as an environment variable instead of via the runtime package, by default
 GOMAXPROCS is 1.
 
-Race Conditions
+### Race Conditions
 
 * Read and write of words are atomic, but not synchronized. Larger than a word, can see
 partial writes.
@@ -114,7 +114,7 @@ partial writes.
 * Race conditions can often manifest themselves on shutdown
 * Atomic writes, mutexs, etc.
 
-Channels
+### Channels
 
 * Channels - send and receive
 * Buffered channels have capacity for storing data, no guarantees about that the data has
