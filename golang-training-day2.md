@@ -130,7 +130,7 @@ there is something to receive.
 in the channel. If there is no capacity, sender blocks.
 * When a channel is closed, sends on the channel will panic, recieves immediately
 unblock (check the receieve status to know if the channel was close - ok is false)
-* Channels and go routines are natural code constructs the have Fidelity to the
+* Channels and go routines are natural code constructs the have fidelity to the
 interactions you'd typically diagram on the whiteboard.
 * Lots of concepts here - http://play.golang.org/p/KuMG3o_7-C Selects, default in select
 to 'peek' and know if the channel is still open, decoration of parameters to know

@@ -81,13 +81,13 @@ http://golang.org/pkg/runtime/
 ### Go Tooling
 
 <pre>
-MACLB015803:example1 a045103$ go build
+MACLB015803:example1$ go build
 ../../../../../ArdanStudios/gotraining/09-testing/01-testing/example1/mongodb/mongodb.go:13:2: cannot find package "gopkg.in/mgo.v2" in any of:
 	/usr/local/go/src/gopkg.in/mgo.v2 (from $GOROOT)
-	/Users/a045103/goprojects/src/gopkg.in/mgo.v2 (from $GOPATH)
+	/Users/example/goprojects/src/gopkg.in/mgo.v2 (from $GOPATH)
 ../../../../../ArdanStudios/gotraining/09-testing/01-testing/example1/buoy/buoy.go:15:2: cannot find package "gopkg.in/mgo.v2/bson" in any of:
 	/usr/local/go/src/gopkg.in/mgo.v2/bson (from $GOROOT)
-	/Users/a045103/goprojects/src/gopkg.in/mgo.v2/bson (from $GOPATH)
-MACLB015803:example1 a045103$ go get
-MACLB015803:example1 a045103$ go build
+	/Users/example/goprojects/src/gopkg.in/mgo.v2/bson (from $GOPATH)
+MACLB015803:example1$ go get
+MACLB015803:example1$ go build
 </pre>
